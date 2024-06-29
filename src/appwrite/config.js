@@ -16,6 +16,7 @@ class Service{
 
     async createPost({title, slug, content, featuredImage, userId, status}){
         try {
+            console.log(userId)
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -51,15 +52,16 @@ class Service{
         }
     }
 
-    async listPosts(queries = [Query.equal("status","active")]){
+    async getPosts(queries = [Query.equal("status","active")]){
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                queries
+                queries,
             )
         } catch (error) {
             console.log("conf listPosts" + error)
+            return false
         }
     }
 

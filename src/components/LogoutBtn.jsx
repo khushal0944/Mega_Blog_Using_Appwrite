@@ -4,11 +4,9 @@ import authService from '../appwrite/auth'
 import {logout} from '../store/authSlice'
 function LogoutBtn() {
     const dispatch = useDispatch()
-    function logoutHandler(){
+    const logoutHandler = ()=>{
         authService.logOut().then(()=>{
             dispatch(logout())
-        }).catch((error)=>{
-            console.log("LogOutBtn Logout Error " + error)
         })
     }
 

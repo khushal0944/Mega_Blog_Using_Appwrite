@@ -39,8 +39,8 @@ class AuthService{
             return await this.account.get()
         } catch (error) {
             console.log("current user " + error)
+            return null; 
         }
-        return null; 
     }
 
     async logOut(){

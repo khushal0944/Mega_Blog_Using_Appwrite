@@ -35,26 +35,33 @@ function Header() {
         },
     ]
     return (
-		<header className="py-3 shadow bg-gray-500">
-			<Container>
-				<nav className="flex">
-					<div className="mr-4">
-						<Link to="/">
-							<Logo width="70px" />
-						</Link>
-					</div>
-					<ul className="flex ml-auto">
-                        {navItems.map((singleItem)=>{
-                            singleItem.active && <li key={singleItem.path}><button className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full' onClick={()=> navigate(singleItem.path)}>{singleItem.name}</button></li>
-                        })}
-                        {
-                            authStatus && <li><LogoutBtn /></li>
-                        }
-					</ul>
-				</nav>
-			</Container>
-		</header>
-	);
+        <header className="py-3 w-full shadow bg-white">
+            <Container>
+                <nav className="flex items-center">
+                    <div className="mr-4">
+                        <Link to="/">
+                            <Logo className="text-3xl" width="70px" />
+                        </Link>
+                    </div>
+                    <ul className="flex ml-auto">
+                        {navItems.map((singleItem) => (
+                            singleItem.active && (
+                                <li key={singleItem.path}>
+                                    <button 
+                                        className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full' 
+                                        onClick={() => navigate(singleItem.path)}
+                                    >
+                                        {singleItem.name}
+                                    </button>
+                                </li>
+                            )
+                        ))}
+                        {authStatus && <li><LogoutBtn /></li>}
+                    </ul>
+                </nav>
+            </Container>
+        </header>
+    );
 }
 
 export default Header;
